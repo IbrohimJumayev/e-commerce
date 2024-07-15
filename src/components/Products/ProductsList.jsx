@@ -9,15 +9,11 @@ const ProductsList = ({
   selectedBrand,
   selectedColor,
 }) => {
-  const filteredProducts = products.filter((product) => {
-    const brandMatch = selectedBrand
-      ? product.brand_name === selectedBrand
-      : true;
-    const colorMatch = selectedColor
-      ? product.color_options.includes(selectedColor)
-      : true;
-    return brandMatch && colorMatch;
-  });
+  const filteredProducts = products.filter(
+    (product) =>
+      (product.brand_name === selectedBrand || !selectedBrand) &&
+      (product.color_options.includes(selectedColor) || !selectedColor)
+  );
 
   return (
     <div className="flex-1">
