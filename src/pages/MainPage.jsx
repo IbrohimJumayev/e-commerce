@@ -6,7 +6,6 @@ import Products from "./Products";
 import Footer from "../components/productsComponents/Footer";
 import SingleProduct from "./SingleProduct";
 
-
 const MainPage = () => {
   return (
     <div className="max-w-screen-xl m-auto mt-10 px-5 max-sm:mt-5">
@@ -15,7 +14,7 @@ const MainPage = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/products/:producId" element={<SingleProduct />}/>
+        <Route path="/products/:id" element={<SingleProduct />} />
       </Routes>
       <Footer />
     </div>

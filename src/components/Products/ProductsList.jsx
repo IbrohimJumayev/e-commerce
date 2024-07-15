@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Aside from "./Aside";
 
-const ProductsList = ({ products, loading, brandsLoading, brands, colors }) => {
+const ProductsList = ({ products, loading, brands, colors }) => {
+  const [cart, setCart] = useState([]);
+
   return (
     <div className="flex gap-5">
       <Aside brands={brands} colors={colors} />
@@ -29,11 +31,9 @@ const ProductsList = ({ products, loading, brandsLoading, brands, colors }) => {
               key={p.id}
             >
               <div className="flex flex-col justify-between h-full">
-                <Link to={`/products/${p.id}`}>
-                  <div>
-                    <img className="w-full" src={p.image_url} alt={p.name} />
-                  </div>
-                </Link>
+                <div>
+                  <img className="w-full" src={p.image_url} alt={p.name} />
+                </div>
 
                 <div className="mt-auto">
                   <Link to={`/products/${p.id}`}>
@@ -59,7 +59,10 @@ const ProductsList = ({ products, loading, brandsLoading, brands, colors }) => {
                     })}
                   </div>
                   <div className="mt-5">
-                    <button className="mt-2 bg-gray-500 hover:scale-x-90 hover:bg-gray-700 text-white px-4 py-3 rounded w-full opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <button
+                      onClick={() => setCart([...cart, p.id])}
+                      className="mt-2 bg-gray-500 hover:scale-x-90 hover:bg-gray-700 text-white px-4 py-3 rounded w-full opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+                    >
                       Add to Cart
                     </button>
                   </div>

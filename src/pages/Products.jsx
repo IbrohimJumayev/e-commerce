@@ -13,6 +13,7 @@ const Products = () => {
   const brands = useSelector((store) => store.BrandsReducer.brands);
   const [loading, setLoading] = useState(true);
   const [brandsLoading, setBrandsLoading] = useState(true);
+ 
 
   useEffect(() => {
     const getProducts = async () => {
@@ -49,8 +50,6 @@ const Products = () => {
     };
     getBrands();
   }, [dispatch]);
-
-  
 
   return (
     <>
