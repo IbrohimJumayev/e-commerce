@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ cart }) => {
+
   return (
     <nav className="flex justify-between items-center mb-10 ">
       <div>
@@ -27,7 +28,9 @@ const Nav = () => {
             <button>
               <span className="material-symbols-outlined">local_mall</span>
             </button>
-            <button className=" bg-blue-500 pb-4 text-white  w-3 h-3 rounded-full text-xs font-bold border-black  absolute -right-0.5 -top-3"></button>
+            <button className=" bg-blue-500 pb-4 text-white  w-3 h-3 rounded-full text-xs font-bold border-black  absolute -right-0.5 -top-3">
+              {cart.length}
+            </button>
           </NavLink>
         </div>
       </div>

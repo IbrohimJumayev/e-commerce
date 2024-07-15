@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchBrands } from "../../featuries/BrandsSlice";
-import api from "../../api/api";
+import React from "react";
 
-const Aside = ({ brands, colors }) => {
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("");
-
-
-//   const filteredBrand = () => {
-//     const allBrands = [...brands];
-//     console.log(allBrands);
-//     const filteredBrandsList = allBrands.filter(
-//       (brand) => brand !== selectedBrand
-//     );
-//     setSelectedBrand(filteredBrandsList);
-//   };
-
-
-
+const Aside = ({
+  brands,
+  colors,
+  selectedColor,
+  setSelectedColor,
+  selectedBrand,
+  setSelectedBrand,
+}) => {
   return (
     <div>
       <aside className="w-56 max-sm:w-40">
@@ -32,7 +22,7 @@ const Aside = ({ brands, colors }) => {
                   name="brand"
                   id={index}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-
+                  checked={selectedBrand === b}
                 />
                 <label className="font-thin text-xl" htmlFor={index}>
                   {b}
@@ -46,7 +36,7 @@ const Aside = ({ brands, colors }) => {
           {colors.map((c, index) => {
             return (
               <li
-                className="list-none flex   duration-300 cursor-pointer  "
+                className="list-none flex duration-300 cursor-pointer"
                 key={index}
               >
                 <span
@@ -54,12 +44,7 @@ const Aside = ({ brands, colors }) => {
                     background: c,
                     outline: selectedColor === c ? "3px solid black" : "",
                   }}
-                  className="rounded-full
-                  border-2
-                  w-2
-                  h-2
-                  px-4
-                  py-4"
+                  className="rounded-full border-2 w-2 h-2 px-4 py-4"
                   onClick={() => setSelectedColor(c)}
                 ></span>
               </li>
